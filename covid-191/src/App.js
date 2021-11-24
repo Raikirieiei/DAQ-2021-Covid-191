@@ -1,22 +1,19 @@
-import React from 'react'
-import './styles/main.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Home from './Home'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import ChartDay from './ChartDay';
 
-import { TailwindThemeProvider, Button } from 'tailwind-react-ui'
 
-const App = () => (
-  <TailwindThemeProvider
-    theme={{
-      brandColors: {
-        primary: 'red',
-      },
-    }}
-  >
-    <Button brand="primary">Covid 1</Button>
-    <br/>
-    <Button brand="primary">Covid 2</Button>
-    <br/>
-    <Button brand="primary">Covid 3</Button>
-  </TailwindThemeProvider>
-)
+function App() {
+  return (
+    <Router>
+        <Switch> 
+          <Route exact path="/" component={Home} />
+          <Route path="/chartday" component={ChartDay} />
+        </Switch> 
+    </Router>
+  );
+}
 
-export default App
+export default App;
