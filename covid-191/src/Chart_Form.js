@@ -1,8 +1,8 @@
 import React from 'react'
-import Chart from './components/ChartDay/Chart'
+import Chart from './components/ChartForm/Chart_Form'
 import Nav from './components/Nav/Nav'
 
-const ChartDay = () => {
+const ChartAll = () => {
     return (
         <div>
             <Nav/>
@@ -11,4 +11,4 @@ const ChartDay = () => {
     )
 }
 
-export default ChartDay
+export default ChartAll
