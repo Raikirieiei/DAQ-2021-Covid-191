@@ -11,4 +11,6 @@ const ChartAll = () => {
     )
 }
 
+
+
 export default ChartAll
