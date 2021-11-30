@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Covid-191 API
+  description:
+    This API provides Thailand Covid data
+  version: 1.0.0
+servers:
+- url: /covid-191/
+paths:
+  /covidperdayfull:
+    get:
+      summary: Returns a list of covid per day.
+      operationId: controller.get_covids_per_day
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CovidAllPerDay'
+         
+
+  /covidall:
+    get:
+      summary: Returns All data information about covid in thailand
+      operationId: controller.get_covids_all
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CovidAll'
+
+
+  /covidvaccine:
+    get:
+      summary: Returns vaccinated number in each province
+      operationId: controller.get_covids_vaccine
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CovidVaccine'
+        
+  
+  /coviddanger:
+    get:
+      summary: Returns danger rate in each province
+      operationId: controller.get_covids_danger
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CovidDanger'
+         
+components:
+  schemas:
+    CovidShortPerDay:
+      type: object
+      properties:
+        province:
+          type: string
+    CovidAllPerDay:
+      type: object
+      properties:
+        province:
+          type: string
+        date:
+          type: string
+        new_case:
+          type: number
+        total_case:
+          type: number
+        new_death:
+          type: number
+        total_death:
+          type: number
+
+    CovidAll:
+      type: object
+      properties:
+        date:
+          type: string
+        new_case:
+          type: number
+        total_case:
+          type: number
+        new_death:
+          type: number
+        total_death:
+          type: number
+        new_recovered:
+          type: number 
+        total_recovered:
+          type: number
+
+    CovidVaccine:
+      type: object
+      properties:
+        province:
+          type: string
+        vaccine:
+          type: string
+    
+    CovidDanger:
+      type: object
+      properties:
+        province:
+          type: string
+        danger:
+          type: number
+        
+        
+         
+         
+    
