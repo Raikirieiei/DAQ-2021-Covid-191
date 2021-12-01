@@ -37,10 +37,10 @@ paths:
                   $ref: '#/components/schemas/CovidAll'
 
 
-  /covidvaccine:
+  /covidvaccineprovincecount:
     get:
       summary: Returns vaccinated number in each province
-      operationId: controller.get_covids_vaccine
+      operationId: controller.get_covids_vaccine_province
       responses:
         200:
           description: Success
@@ -49,7 +49,21 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CovidVaccine'
+                  $ref: '#/components/schemas/CovidVaccineProvinceCount'
+  
+  /covidvaccinenamecount:
+    get:
+      summary: Returns vaccinated number in each province
+      operationId: controller.get_covids_vaccine_name
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CovidVaccineNameCount'
         
   
   /coviddanger:
@@ -68,11 +82,13 @@ paths:
          
 components:
   schemas:
+
     CovidShortPerDay:
       type: object
       properties:
         province:
           type: string
+
     CovidAllPerDay:
       type: object
       properties:
@@ -107,13 +123,21 @@ components:
         total_recovered:
           type: number
 
-    CovidVaccine:
+    CovidVaccineProvinceCount:
       type: object
       properties:
         province:
           type: string
-        vaccine:
+        vaccine_count:
+          type: number
+
+    CovidVaccineNameCount:
+      type: object
+      properties:
+        vaccine_name:
           type: string
+        vaccine_count:
+          type: number
     
     CovidDanger:
       type: object
